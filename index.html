@@ -5,56 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ribbead | Arte en Hama Beads</title>
   <link rel="stylesheet" href="styles.css">
-  <!-- VanillaTilt para interactividad 3D en las Polaroid -->
+  <!-- VanillaTilt para interactividad 3D de impacto -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
 </head>
 <body>
 
-  <!-- Lienzos verdes fluídos animándose en el fondo -->
-  <div class="green-blob blob-1"></div>
-  <div class="green-blob blob-2"></div>
-  <div class="green-blob blob-3"></div>
+  <!-- Elemento de luz interactivo de fondo -->
+  <div class="cursor-glow" id="cursorGlow"></div>
 
-  <!-- HERO & LOGO -->
-  <header>
-    <div class="glass-card header-card">
-      <div class="logo-container">
+  <!-- HERO SECTION -->
+  <header class="hero-section">
+    <div class="hero-card">
+      <div class="logo-wrapper">
         <img src="logo.jpeg" alt="Ribbead Logo" class="logo">
       </div>
-      <h1>Ribbead 🐸✨</h1>
-      <p class="tagline">Donde el sonido de la creatividad cobra forma pixel a pixel</p>
+
+      <div class="badge">🐸 ARTE EN HAMA BEADS 🐸</div>
+
+      <h1 class="brand-title">Ribbead</h1>
+      <p class="tagline">Donde la creatividad cobra forma pixel a pixel</p>
       
-      <div class="quote-box">
-        "Transformamos cuentas de plástico en pequeñas ilusiones portátiles. Cada llavero es un pedazo de arte creado a mano para acompañarte."
+      <div class="quote-card">
+        <span class="quote-symbol">“</span>
+        <p>Transformamos cuentas de plástico en pequeñas ilusiones portátiles. Cada llavero es un pedazo de arte único creado a mano para acompañarte.</p>
       </div>
 
-      <button id="btnToggleCatalog" class="btn-catalog">Explorar Catálogo 📦</button>
+      <button id="btnToggleCatalog" class="btn-primary">
+        <span>Explorar Catálogo 📦</span>
+      </button>
     </div>
   </header>
 
-  <!-- CATÁLOGO GENERAL (Oculto por defecto con la clase hidden-section) -->
+  <!-- CATÁLOGO GENERAL (Oculto por defecto) -->
   <section id="catalogo" class="hidden-section">
-    <h2 class="section-title">📬 Listos para enviar 📬</h2>
+    <div class="section-header">
+      <h2 class="section-title">📬 Listos para Enviar</h2>
+      <p class="section-subtitle">Haz clic en cualquier diseño para verlo en detalle</p>
+    </div>
+    
     <div class="grid-catalog" id="catalog-container">
       <!-- Generado dinámicamente con JavaScript -->
     </div>
   </section>
 
-  <!-- FORMULARIO DE PEDIDOS PERSONALIZADOS -->
+  <!-- SECCIÓN INTERACTIVA DE PEDIDOS POR WHATSAPP -->
   <section class="custom-section">
-    <div class="glass-card form-card">
-      <h2>¿Tienes una idea en mente? 💡</h2>
-      <p>Cuéntanos tu diseño personalizado y te cotizamos de inmediato por WhatsApp.</p>
+    <div class="custom-card">
+      <div class="custom-header">
+        <h2>¿Tienes una idea en mente? 💡</h2>
+        <p>Escribe tu idea personalizada y te cotizamos al instante directo a WhatsApp.</p>
+      </div>
       
       <div class="form-group">
-        <textarea id="ideaInput" placeholder="Ejemplo: Quiero el diseño de mi llavero de gatito con un sombrero, ¿cuánto costará?"></textarea>
+        <textarea id="ideaInput" placeholder="Ejemplo: Hola! Quiero cotizar un llavero de gatito con sombrero de brujo, ¿cuánto costará?"></textarea>
       </div>
-      <button class="btn-send" id="btnSend">Consultar por WhatsApp 💬</button>
+
+      <button class="btn-whatsapp" id="btnSend">
+        <span>Consultar Cotización por WhatsApp 💬</span>
+      </button>
     </div>
   </section>
 
   <footer>
-    <p>&copy; 2026 Ribbead - Arte en Hama Beads</p>
+    <p>&copy; 2026 <strong>Ribbead</strong> — Hecho a mano con dedicación ✨</p>
   </footer>
 
   <script src="script.js"></script>

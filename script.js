@@ -1,5 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Cargar dinámicamente las 11 imágenes Polaroid
+  // 1. Seguimiento suave de luz neón con el mouse
+  const cursorGlow = document.getElementById('cursorGlow');
+  document.addEventListener('mousemove', (e) => {
+    cursorGlow.style.left = e.clientX + 'px';
+    cursorGlow.style.top = e.clientY + 'px';
+  });
+
+  // 2. Generar las 11 Polaroid del Catálogo
   const catalogContainer = document.getElementById('catalog-container');
   const catalogSection = document.getElementById('catalogo');
   const btnToggleCatalog = document.getElementById('btnToggleCatalog');
@@ -9,14 +16,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const polaroid = document.createElement('div');
     polaroid.className = 'polaroid';
     
+    // Atributos para efecto 3D al pasar el cursor
     polaroid.setAttribute('data-tilt', '');
-    polaroid.setAttribute('data-tilt-max', '12');
-    polaroid.setAttribute('data-tilt-speed', '400');
+    polaroid.setAttribute('data-tilt-max', '10');
+    polaroid.setAttribute('data-tilt-speed', '300');
     polaroid.setAttribute('data-tilt-glare', 'true');
-    polaroid.setAttribute('data-tilt-max-glare', '0.2');
+    polaroid.setAttribute('data-tilt-max-glare', '0.15');
 
     polaroid.innerHTML = `
-      <img src="img/catalogo/cat${i}.jpeg" alt="Diseño Hama Bead ${i}" onerror="this.src='https://via.placeholder.com/250?text=Hama+Bead+${i}'">
+      <div class="polaroid-img-box">
+        <img src="img/catalogo/cat${i}.jpeg" alt="Diseño Hama Bead ${i}" onerror="this.src='https://via.placeholder.com/300x350?text=Ribbead+Dise%C3%B1o+${i}'">
+      </div>
       <div class="polaroid-caption">Diseño #${i}</div>
     `;
 
@@ -28,19 +38,19 @@ document.addEventListener('DOMContentLoaded', () => {
     VanillaTilt.init(document.querySelectorAll('.polaroid'));
   }
 
-  // 2. Alternar la visibilidad del catálogo al hacer clic en el botón
+  // 3. Mostrar / Ocultar el catálogo al presionar el botón
   btnToggleCatalog.addEventListener('click', () => {
     if (catalogSection.classList.contains('hidden-section')) {
       catalogSection.classList.remove('hidden-section');
-      btnToggleCatalog.textContent = 'Ocultar Catálogo 🙈';
+      btnToggleCatalog.innerHTML = '<span>Ocultar Catálogo 🙈</span>';
       catalogSection.scrollIntoView({ behavior: 'smooth' });
     } else {
       catalogSection.classList.add('hidden-section');
-      btnToggleCatalog.textContent = 'Explorar Catálogo 📦';
+      btnToggleCatalog.innerHTML = '<span>Explorar Catálogo 📦</span>';
     }
   });
 
-  // 3. Enviar mensaje a WhatsApp
+  // 4. Enviar idea a WhatsApp
   const btnSend = document.getElementById('btnSend');
   btnSend.addEventListener('click', sendToWhatsApp);
 
@@ -49,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const phone = "50379097793";
 
     if (!text) {
-      alert("Por favor, escribe tu idea antes de enviar.");
+      alert("Por favor, escribe tu idea antes de consultar.");
       return;
     }
 
