@@ -1,0 +1,296 @@
+/* VARIABLES Y ESTILOS GLOBALES */
+:root {
+  --bg-coffee: #cbb094;        /* Café claro base original */
+  --text-dark: #3e2723;        /* Café oscuro de alto contraste */
+  --green-moss: #2e7d32;
+  --green-vibrant: #4caf50;
+  --glass-bg: rgba(255, 255, 255, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --shadow-modern: 0 15px 35px rgba(62, 39, 35, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-coffee); /* Fondo café claro de base */
+  color: var(--text-dark);
+  min-height: 100vh;
+  padding: 20px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* LIENZOS VERDES EN MOVIMIENTO (BACKGROUND BLOBS) */
+.green-blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.55;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.blob-1 {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, #4caf50 0%, #81c784 100%);
+  top: -100px;
+  left: -100px;
+  animation: moveBlob1 18s ease-in-out infinite alternate;
+}
+
+.blob-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #2e7d32 0%, #a8e6cf 100%);
+  bottom: -150px;
+  right: -100px;
+  animation: moveBlob2 22s ease-in-out infinite alternate;
+}
+
+.blob-3 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, #81c784 0%, #388e3c 100%);
+  top: 40%;
+  left: 30%;
+  animation: moveBlob3 15s ease-in-out infinite alternate;
+}
+
+@keyframes moveBlob1 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(120px, 150px) scale(1.2); }
+}
+
+@keyframes moveBlob2 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-150px, -120px) scale(1.15); }
+}
+
+@keyframes moveBlob3 {
+  0% { transform: translate(0, 0) scale(0.9); }
+  100% { transform: translate(-80px, 100px) scale(1.25); }
+}
+
+/* EFECTO CRISTAL (GLASSMORPHISM) */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  box-shadow: var(--shadow-modern);
+  padding: 35px;
+}
+
+/* HEADER Y HERO */
+header {
+  max-width: 800px;
+  margin: 20px auto 40px auto;
+}
+
+.header-card {
+  text-align: center;
+}
+
+.logo-container {
+  margin-bottom: 20px;
+}
+
+.logo {
+  max-width: 150px;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  border: 4px solid #fff;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.logo:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+h1 {
+  font-size: 3.2rem;
+  letter-spacing: 1.5px;
+  color: var(--text-dark);
+  margin-bottom: 5px;
+}
+
+.tagline {
+  font-style: italic;
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.quote-box {
+  max-width: 600px;
+  margin: 0 auto 30px auto;
+  background: rgba(255, 255, 255, 0.55);
+  padding: 18px 22px;
+  border-radius: 16px;
+  border-left: 6px solid var(--green-moss);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.btn-catalog {
+  display: inline-block;
+  padding: 16px 36px;
+  background-color: var(--text-dark);
+  color: var(--bg-coffee);
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 50px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.btn-catalog:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+  background-color: #271815;
+}
+
+/* SECCIÓN CATÁLOGO */
+section {
+  max-width: 1200px;
+  margin: 60px auto;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: var(--text-dark);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.grid-catalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 40px;
+  padding: 10px;
+}
+
+/* ESTILO POLAROID CON TAPE EFECTO */
+.polaroid {
+  background: #ffffff;
+  padding: 15px 15px 25px 15px;
+  border-radius: 6px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  position: relative;
+  text-align: center;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.polaroid::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 90px;
+  height: 25px;
+  background-color: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+}
+
+.polaroid img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #f0f0f0;
+}
+
+.polaroid-caption {
+  margin-top: 15px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  color: var(--text-dark);
+  font-size: 1.15rem;
+}
+
+/* FORMULARIO WHATSAPP */
+.custom-section {
+  max-width: 750px;
+  margin: 80px auto;
+}
+
+.form-card h2 {
+  text-align: center;
+  margin-bottom: 12px;
+  font-size: 2rem;
+}
+
+.form-card p {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.05rem;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+textarea {
+  width: 100%;
+  height: 130px;
+  padding: 18px;
+  border: 2px solid var(--text-dark);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  font-size: 1rem;
+  resize: vertical;
+  transition: all 0.3s ease;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--green-moss);
+  background: #ffffff;
+  box-shadow: 0 0 12px rgba(46, 125, 50, 0.3);
+}
+
+.btn-send {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--green-moss), #1b5e20);
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.15rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(46, 125, 50, 0.3);
+  transition: all 0.3s ease;
+}
+
+.btn-send:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(46, 125, 50, 0.4);
+  background: linear-gradient(135deg, #1b5e20, #0f3813);
+}
+
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  opacity: 0.8;
+}

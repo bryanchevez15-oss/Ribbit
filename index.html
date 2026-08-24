@@ -5,41 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ribbead | Arte en Hama Beads</title>
   <link rel="stylesheet" href="styles.css">
+  <!-- VanillaTilt para interactividad 3D en las Polaroid -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
 </head>
 <body>
 
+  <!-- Lienzos verdes fluídos animándose en el fondo -->
+  <div class="green-blob blob-1"></div>
+  <div class="green-blob blob-2"></div>
+  <div class="green-blob blob-3"></div>
+
   <!-- HERO & LOGO -->
   <header>
-    <div class="logo-container">
-      <img src="logo.jpeg" alt="Ribbead Logo" class="logo">
-    </div>
-    <h1>Ribbead 🐸✨</h1>
-    <p class="tagline">Donde el sonido de la creatividad cobra forma pixel a pixel</p>
-    
-    <div class="quote-box">
-      "Transformamos cuentas de plástico en pequeñas ilusiones portátiles. Cada llavero es un pedazo de arte creado a mano para acompañarte."
-    </div>
+    <div class="glass-card header-card">
+      <div class="logo-container">
+        <img src="logo.jpeg" alt="Ribbead Logo" class="logo">
+      </div>
+      <h1>Ribbead 🐸✨</h1>
+      <p class="tagline">Donde el sonido de la creatividad cobra forma pixel a pixel</p>
+      
+      <div class="quote-box">
+        "Transformamos cuentas de plástico en pequeñas ilusiones portátiles. Cada llavero es un pedazo de arte creado a mano para acompañarte."
+      </div>
 
-    <a href="#catalogo" class="btn-catalog">Explorar Catálogo 📦</a>
+      <a href="#catalogo" class="btn-catalog">Explorar Catálogo 📦</a>
+    </div>
   </header>
 
   <!-- CATÁLOGO GENERAL -->
   <section id="catalogo">
-    <h2 class="section-title">📬 Nuestros trabajos 📬</h2>
+    <h2 class="section-title">📬 Listos para enviar 📬</h2>
     <div class="grid-catalog" id="catalog-container">
-      <!-- Las polaroids se insertan dinámicamente desde script.js -->
+      <!-- Generado dinámicamente con JavaScript -->
     </div>
   </section>
 
   <!-- FORMULARIO DE PEDIDOS PERSONALIZADOS -->
   <section class="custom-section">
-    <h2>¿Tienes una idea en mente? 💡</h2>
-    <p>Cuéntanos tu diseño personalizado y te cotizamos de inmediato por WhatsApp.</p>
-    
-    <div class="form-group">
-      <textarea id="ideaInput" placeholder="Ejemplo: Quiero el diseño de mi llavero de gatito con un sombrero, ¿cuánto costará?"></textarea>
+    <div class="glass-card form-card">
+      <h2>¿Tienes una idea en mente? 💡</h2>
+      <p>Cuéntanos tu diseño personalizado y te cotizamos de inmediato por WhatsApp.</p>
+      
+      <div class="form-group">
+        <textarea id="ideaInput" placeholder="Ejemplo: Quiero el diseño de mi llavero de gatito con un sombrero, ¿cuánto costará?"></textarea>
+      </div>
+      <button class="btn-send" id="btnSend">Consultar por WhatsApp 💬</button>
     </div>
-    <button class="btn-send" id="btnSend">Consultar por WhatsApp 💬</button>
   </section>
 
   <footer>
