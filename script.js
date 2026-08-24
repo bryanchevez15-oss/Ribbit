@@ -1,13 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Cargar dinámicamente las 11 imágenes Polaroid con animación 3D Tilt
+  // 1. Cargar dinámicamente las 11 imágenes Polaroid
   const catalogContainer = document.getElementById('catalog-container');
+  const catalogSection = document.getElementById('catalogo');
+  const btnToggleCatalog = document.getElementById('btnToggleCatalog');
   const totalImages = 11;
 
   for (let i = 1; i <= totalImages; i++) {
     const polaroid = document.createElement('div');
     polaroid.className = 'polaroid';
     
-    // Configuración para el efecto 3D al interactuar con el mouse
     polaroid.setAttribute('data-tilt', '');
     polaroid.setAttribute('data-tilt-max', '12');
     polaroid.setAttribute('data-tilt-speed', '400');
@@ -22,12 +23,24 @@ document.addEventListener('DOMContentLoaded', () => {
     catalogContainer.appendChild(polaroid);
   }
 
-  // Inicializar efecto 3D Tilt en las Polaroid
+  // Inicializar efecto 3D Tilt
   if (typeof VanillaTilt !== 'undefined') {
     VanillaTilt.init(document.querySelectorAll('.polaroid'));
   }
 
-  // 2. Enviar mensaje de cotización a WhatsApp
+  // 2. Alternar la visibilidad del catálogo al hacer clic en el botón
+  btnToggleCatalog.addEventListener('click', () => {
+    if (catalogSection.classList.contains('hidden-section')) {
+      catalogSection.classList.remove('hidden-section');
+      btnToggleCatalog.textContent = 'Ocultar Catálogo 🙈';
+      catalogSection.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      catalogSection.classList.add('hidden-section');
+      btnToggleCatalog.textContent = 'Explorar Catálogo 📦';
+    }
+  });
+
+  // 3. Enviar mensaje a WhatsApp
   const btnSend = document.getElementById('btnSend');
   btnSend.addEventListener('click', sendToWhatsApp);
 
